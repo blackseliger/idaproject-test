@@ -18,29 +18,23 @@ export default {
 };
 </script>
 
-
-<style lang="scss" scoped>
-@import '@/assets/css/normalize.css';
+<style lang="scss">
+@import '@/assets/css/normalize.scss';
 @import '@/assets/fonts/fonts.css';
-@import '@/assets/css/main.css';
+@import '@/assets/css/main.scss';
 
-// #app {
-//   font-family: Avenir, Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   // text-align: center;
-//   // color: #2c3e50;
-//   // margin-top: 60px;
-//   overflow: hidden;
-// }
+
+body {
+  overflow: hidden;
+}
+
+#app {
+}
 
 .page {
-  /* width: 100vw;
-    width: 100vh; */
+  height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
   font-family: 'Source Sans Pro';
-  overflow-x: hidden;
 }
 </style>
-
