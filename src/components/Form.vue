@@ -1,14 +1,15 @@
 <template>
   <form class="form-group">
-    <ui-input label="Наименование товара" placeholder="Введите наименование товара"></ui-input>
-    <ui-text-area label="Описание товара" placeholder="Введите описание товара"></ui-text-area>
-    <ui-input label="Ссылка на изображение товара" placeholder="Введите ссылку на изображение товара"></ui-input>
-    <ui-input label="Цена товара" type="number" placeholder="Введите цену товара"></ui-input>
+    <ui-input v-model="formData.title"  label="Наименование товара" placeholder="Введите наименование товара"></ui-input>
+    <ui-text-area v-model="formData.description" label="Описание товара" placeholder="Введите описание товара"></ui-text-area>
+    <ui-input v-model="formData.scrImg" label="Ссылка на изображение товара" placeholder="Введите ссылку на изображение товара"></ui-input>
+    <ui-input v-model="formData.price" label="Цена товара" type="number" placeholder="Введите цену товара"></ui-input>
     <button class="button" disabled="disabled">Добавить товар</button>
   </form>
 </template>
 
 <script>
+import { klona } from 'klona';
 import UiInput from './Input.vue';
 import UiTextArea from './uiTextArea.vue';
 
@@ -26,6 +27,26 @@ export default {
       },
     }
   },
+
+  data() {
+    return {
+      localGoods: klona(this.goods),
+      formData: {
+        title: null,
+        description: null,
+        price: null,
+        scrImg: null,
+      }
+    } 
+  },
+
+  watch: {
+    'formData.price'(newValue, oldValue) {
+      console.log(newValue, oldValue);
+    }
+  }
+ 
+  
 
 
 };

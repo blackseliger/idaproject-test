@@ -1,7 +1,7 @@
 <template>
   <div class="input__control">
     <label for="input_success" class="form-group__label">
-      <span class="label__text"> Наименование товара </span>
+      <span class="label__text"> {{ label }} </span>
       <div class="form-group__icon">
         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="4" height="4" rx="2" fill="#FF8484" />
@@ -9,12 +9,17 @@
       </div>
     </label>
     <div class="form-group__input">
-      <input  class="form-group__control" 
-      :class="{
-        'form-group__control_error': isFill, 
-        'form-group__control_success': !isFill, 
-        }"  
-      type="text" id="input_success" :placeholder="placeholder" v-model="value" />
+      <input
+        class="form-group__control"
+        :class="{
+          'form-group__control_error': isFill,
+          'form-group__control_success': !isFill,
+        }"
+        type="text"
+        :placeholder="placeholder"
+        :value="modelValue"
+        @input="controlInput($event.target.value)"
+      />
       <span v-if="isFill" class="form-group__error-message">Поле является обязательным</span>
     </div>
   </div>
@@ -33,23 +38,37 @@ export default {
       type: String,
       required: true,
     },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    modelValue: {
+      type: [String, Boolean, Number, Function],
+      required: true,
+      default: true,
+    },
   },
 
-  data() {
-    return {
-      value: null,
-    //   isFill: false,
-    };
+  data() {},
+
+  methods: {
+    controlInput(value) {
+      if (this.type === 'number' && value !== "") {
+        console.log(value);
+        this.$emit('update:modelValue', (new Intl.NumberFormat('ru-RU').format(parseInt(value))));
+      } else {
+        this.$emit('update:modelValue', value);
+      }
+    },
   },
 
   computed: {
     isFill() {
-      return this.value !== '' ? false : true;
+      return this.modelValue !== '' ? false : true;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -1,16 +1,10 @@
 <template>
   <main class="page__main">
-   
     <div class="container container_main">
-       <aside class="main__form aside__form">
-          <asideForm></asideForm>
-        </aside>
-      <!-- <div class="wrapper__form_position">
-        <aside class="main__form aside__form">
-          <asideForm></asideForm>
-        </aside>
-      </div> -->
-      <pageCards></pageCards>
+      <aside class="main__form aside__form">
+        <asideForm goods="goods"></asideForm>
+      </aside>
+      <pageCards goods="goods"></pageCards>
     </div>
   </main>
 </template>
@@ -22,6 +16,16 @@ import pageCards from './Cards.vue';
 export default {
   name: 'pageMain',
   components: { asideForm, pageCards },
+
+  props: {
+    goods: {
+      type: Object,
+      required: true,
+      default() {
+        return {}
+      }
+    }
+  },
 };
 </script>
 
