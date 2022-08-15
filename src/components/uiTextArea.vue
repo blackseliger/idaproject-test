@@ -7,9 +7,9 @@
       <textarea
         class="form-group__control form-group__control_textarea"
         type="text"
-        id="input_success"
-        placeholder="Введите описание товара"
-        value=""
+        :placeholder="placeholder"
+        :value="modelValue"
+        @input="controlInput($event.target.value)"
       />
     </div>
   </div>
@@ -23,12 +23,27 @@ export default {
     label: {
       type: String,
       required: true,
-      default: 'Наименование строки нет',
     },
-
-     placeholder: {
+    placeholder: {
       type: String,
       required: true,
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    modelValue: {
+      type: [String, Boolean, Number, Function],
+      required: true,
+      default: true,
+    },
+  },
+
+  data() {},
+
+  methods: {
+    controlInput(value) {
+      this.$emit('update:modelValue', value);
     },
   },
 };

@@ -10,6 +10,7 @@
     </label>
     <div class="form-group__input">
       <input
+        ref="input"
         class="form-group__control"
         :class="{
           'form-group__control_error': isFill,
@@ -53,9 +54,13 @@ export default {
 
   methods: {
     controlInput(value) {
-      if (this.type === 'number' && value !== "") {
-        console.log(value);
-        this.$emit('update:modelValue', (new Intl.NumberFormat('ru-RU').format(parseInt(value))));
+      if (this.type === 'number' && value !== '') {
+        if (value.match(/[a-z]/g)) {
+          this.$refs['input'].value = '';
+          this.$emit('update:modelValue', '');
+        } else {
+          this.$emit('update:modelValue', new Intl.NumberFormat('ru-RU').format(value.replace(/\s/g, '')));
+        }
       } else {
         this.$emit('update:modelValue', value);
       }

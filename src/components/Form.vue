@@ -1,17 +1,26 @@
 <template>
-  <form class="form-group">
-    <ui-input v-model="formData.title"  label="Наименование товара" placeholder="Введите наименование товара"></ui-input>
-    <ui-text-area v-model="formData.description" label="Описание товара" placeholder="Введите описание товара"></ui-text-area>
-    <ui-input v-model="formData.scrImg" label="Ссылка на изображение товара" placeholder="Введите ссылку на изображение товара"></ui-input>
+  <form @submit.prevent="$emit('handleSubmit', formData )" class="form-group">
+    <ui-input v-model="formData.title" label="Наименование товара" placeholder="Введите наименование товара"></ui-input>
+    <ui-text-area
+      v-model="formData.description"
+      label="Описание товара"
+      placeholder="Введите описание товара"
+    ></ui-text-area>
+    <ui-input
+      v-model="formData.scrImg"
+      label="Ссылка на изображение товара"
+      placeholder="Введите ссылку на изображение товара"
+    ></ui-input>
     <ui-input v-model="formData.price" label="Цена товара" type="number" placeholder="Введите цену товара"></ui-input>
-    <button class="button" disabled="disabled">Добавить товар</button>
+    <button class="button"  :disabled="buttonWork">Добавить товар</button>
   </form>
 </template>
 
 <script>
-import { klona } from 'klona';
 import UiInput from './Input.vue';
 import UiTextArea from './uiTextArea.vue';
+
+const validKeys = ['title', 'price', 'scrImg'];
 
 export default {
   name: 'asideForm',
@@ -22,32 +31,36 @@ export default {
     goods: {
       type: Object,
       required: true,
-      default()  {
-        return {}
+      default() {
+        return {};
       },
-    }
+    },
   },
 
   data() {
     return {
-      localGoods: klona(this.goods),
       formData: {
         title: null,
         description: null,
         price: null,
         scrImg: null,
-      }
-    } 
+      },
+    };
   },
 
-  watch: {
-    'formData.price'(newValue, oldValue) {
-      console.log(newValue, oldValue);
-    }
-  }
- 
-  
-
+  computed: {
+    buttonWork() {
+      let result = true;
+      for (const key of validKeys) {
+        if (!this.formData[key]) {
+          return (result = true);
+        } else {
+          result = false;
+        }
+      }
+      return result;
+    },
+  },
 
 };
 </script>
@@ -59,7 +72,6 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  
 
   &__label {
     font-style: normal;
@@ -98,12 +110,11 @@ export default {
   }
 
   &__control_error {
-    
     border: 1px solid $ligthRed;
   }
 
   &__control_success {
-     border: none;
+    border: none;
   }
 
   &__control:focus {
@@ -126,7 +137,7 @@ export default {
     padding-bottom: 11px;
     width: 100%;
     outline: none;
-    transition: 0.2s transform; 
+    transition: 0.2s transform;
     box-sizing: border-box;
   }
 
@@ -134,10 +145,9 @@ export default {
     resize: none;
     height: 108px;
     overflow: hidden;
-     border: none;
+    border: none;
   }
 }
-
 
 .button {
   height: 36px;
