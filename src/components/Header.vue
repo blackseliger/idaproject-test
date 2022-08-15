@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 .page__header {
   padding-top: 2rem;
+  position: relative;
 }
 
 .container {
