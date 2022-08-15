@@ -19,7 +19,7 @@
 
 <script>
 import shortid from 'shortid';
-import asideForm from './components/Form.vue';
+import asideForm from './components/UiForm.vue';
 import pageCards from './components/Cards.vue';
 import UiDropdown from './components/Dropdown.vue';
 

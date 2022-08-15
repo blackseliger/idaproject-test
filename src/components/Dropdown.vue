@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: 'UiDropdown',
+  name: 'UiDropdown.vue',
 };
 
 

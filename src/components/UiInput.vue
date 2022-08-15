@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'UiInput',
+  name: 'UiInput.vue',
 
   props: {
     label: {

@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import UiInput from './Input.vue';
-import UiTextArea from './uiTextArea.vue';
+import UiInput from './UiInput.vue';
+import UiTextArea from './UiTextArea.vue';
 
 const validKeys = ['title', 'price', 'scrImg'];
 
 export default {
-  name: 'asideForm',
+  name: 'UiForm.vue',
 
   components: { UiInput, UiTextArea },
 
@@ -158,7 +158,7 @@ export default {
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  /* transition: opacity 200ms ease-in-out, background 200ms ease-in-out; */
+  transition: background 200ms ease-in-out; 
   padding: 10px 95px 11px 95px;
   border: none;
   cursor: pointer;
@@ -176,33 +176,4 @@ export default {
   }
 }
 
-// /* primary block
-
-//     &_primary
-//         background-color: var(--primary-background-color)
-//         color: var(--primary-color)
-
-//     &_primary:hover
-//         background-color: var(--primary-hover)
-
-// /* secondary block */
-
-// /* .button_secondary {
-//  background-color: var(--secondary-background-color);
-//  color: var(--secondary-color);
-
-//     &_secondary:hover
-//         background-color: var(--secondary-hover)
-
-// /* alternate block */
-
-// /* .button_alternate {
-//  background-color: var(--alternate-background-color);
-//  color: var(--alternate-color);
-//  box-sizing: border-box;
-//  border: 1px solid #ACB5BD;
-
-//     &_alternate:hover
-//         border: 1px solid #212429
-// }  */
 </style>

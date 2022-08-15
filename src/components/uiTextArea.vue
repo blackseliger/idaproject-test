@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'UiTextArea',
+  name: 'UiTextArea.vue',
 
   props: {
     label: {

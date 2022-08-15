@@ -11,7 +11,7 @@
 import UiDropdown from './Dropdown.vue';
 
 export default {
-  name: 'pageHeader',
+  name: 'PageHeader.vue',
 
   components: {
     UiDropdown,

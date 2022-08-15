@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import asideForm from './Form.vue';
+import asideForm from './UiForm.vue';
 import pageCards from './Cards.vue';
 
 export default {
-  name: 'pageMain',
+  name: 'PageMain.vue',
   components: { asideForm, pageCards },
 
   props: {
