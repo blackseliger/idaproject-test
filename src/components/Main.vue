@@ -1,9 +1,15 @@
 <template>
   <main class="page__main">
+   
     <div class="container container_main">
-      <aside class="main__form aside__form">
-        <asideForm></asideForm>
-      </aside>
+       <aside class="main__form aside__form">
+          <asideForm></asideForm>
+        </aside>
+      <!-- <div class="wrapper__form_position">
+        <aside class="main__form aside__form">
+          <asideForm></asideForm>
+        </aside>
+      </div> -->
       <pageCards></pageCards>
     </div>
   </main>
@@ -43,11 +49,13 @@ export default {
     background: $white;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
+    height: 440px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 24px;
   }
   &__cards {
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(332px, 1fr));
-     */
     grid-template-columns: repeat(3, 332px);
     gap: 16px;
   }
@@ -57,12 +65,12 @@ export default {
     grid-template-columns: 1fr;
     position: relative;
     gap: 16px;
+    height: 423px;
   }
-
 }
 
 .card {
-    cursor: $customPointer;
+  cursor: $customPointer;
 
   &__icon_delete {
     display: inline-block;
@@ -101,7 +109,6 @@ export default {
   }
 
   &__header {
-
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
@@ -132,7 +139,6 @@ export default {
 
     color: $brown;
   }
-  
 }
 
 .card:hover .card__icon_delete {

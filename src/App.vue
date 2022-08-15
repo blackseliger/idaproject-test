@@ -22,14 +22,11 @@ export default {
 @import '@/assets/css/normalize.scss';
 @import '@/assets/fonts/fonts.css';
 @import '@/assets/css/main.scss';
+// @import '@/assets/css/variables.scss';
 
 
-body {
-  overflow: hidden;
-}
-
-#app {
-}
+::-webkit-scrollbar { width: 0 !important}
+// work in Chrome, Yandex, not Mozilla :{ 
 
 .page {
   height: 100vh;

@@ -1,87 +1,44 @@
 <template>
   <form class="form-group">
-    <div class="input__control">
-      <label for="input_success" class="form-group__label">
-        <span class="label__text"> Наименование товара </span>
-        <div class="form-group__icon">
-          <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="4" height="4" rx="2" fill="#FF8484" />
-          </svg>
-        </div>
-      </label>
-      <div class="form-group__input">
-        <input
-          class="form-group__control"
-          type="text"
-          id="input_success"
-          placeholder="Введите наименование товара"
-          value="Success"
-        />
-      </div>
-    </div>
-    <div class="input__control">
-      <label for="input_success" class="form-group__label">
-        <span class="label__text"> Описание товара </span>
-      </label>
-      <div class="form-group__input">
-        <textarea
-          class="form-group__control form-group__control_textarea"
-          type="text"
-          id="input_success"
-          placeholder="Введите описание товара"
-          value="Success"
-        />
-      </div>
-    </div>
-    <div class="input__control">
-      <label for="input_success" class="form-group__label">
-        <span class="label__text"> Ссылка на изображение товара </span>
-        <div class="form-group__icon">
-          <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="4" height="4" rx="2" fill="#FF8484" />
-          </svg>
-        </div>
-      </label>
-      <div class="form-group__input">
-        <input
-          class="form-group__control"
-          type="text"
-          id="input_success"
-          placeholder="Введите ссылку"
-          value="Success"
-        />
-      </div>
-    </div>
-    <div class="input__control">
-      <label for="input_success" class="form-group__label">
-        <span class="label__text"> Цена товара </span>
-        <div class="form-group__icon">
-          <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="4" height="4" rx="2" fill="#FF8484" />
-          </svg>
-        </div>
-      </label>
-      <div class="form-group__input">
-        <input class="form-group__control" type="text" id="input_success" placeholder="Введите цену" value="Success" />
-      </div>
-    </div>
+    <ui-input label="Наименование товара" placeholder="Введите наименование товара"></ui-input>
+    <ui-text-area label="Описание товара" placeholder="Введите описание товара"></ui-text-area>
+    <ui-input label="Ссылка на изображение товара" placeholder="Введите ссылку на изображение товара"></ui-input>
+    <ui-input label="Цена товара" type="number" placeholder="Введите цену товара"></ui-input>
     <button class="button" disabled="disabled">Добавить товар</button>
   </form>
 </template>
 
 <script>
+import UiInput from './Input.vue';
+import UiTextArea from './uiTextArea.vue';
+
 export default {
   name: 'asideForm',
+
+  components: { UiInput, UiTextArea },
+
+  props: {
+    goods: {
+      type: Object,
+      required: true,
+      default()  {
+        return {}
+      },
+    }
+  },
+
+
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/assets/css/variables.scss';
 
 .form-group {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  
 
   &__label {
     font-style: normal;
@@ -104,9 +61,35 @@ export default {
   &__input {
     display: inline-flex;
     width: 100%;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  &__input &__control {
+  &__error-message {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    letter-spacing: -0.02em;
+
+    color: $ligthRed;
+  }
+
+  &__control_error {
+    
+    border: 1px solid $ligthRed;
+  }
+
+  &__control_success {
+     border: none;
+  }
+
+  &__control:focus {
+    transform: scale(105%);
+  }
+
+  &__control {
     background: $white;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -114,39 +97,26 @@ export default {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: left;
     padding-top: 10px;
     padding-left: 16px;
     padding-bottom: 11px;
     width: 100%;
     outline: none;
-    border: none;
+    transition: 0.2s transform; 
     box-sizing: border-box;
   }
 
   &__control_textarea {
     resize: none;
-    
+    height: 108px;
     overflow: hidden;
+     border: none;
   }
 }
 
-// /* .form-group .form-group__input .form-group__control:focus {
-//  border: 1px solid var(--blue-3);
-//  box-shadow: 0px 1px 1px rgba(51, 154, 240, 0.1);
-
-//     &_success .form-group__input .form-group__control:focus
-//         border: 1px solid var(--blue-3)
-//         box-shadow: 0px 1px 1px rgba(51, 154, 240, 0.1)
-
-//     &_invalid .form-group__input .form-group__control:focus
-//         border: 1px solid var(--red)
-//         box-shadow: 0px 1px 1px rgba(240, 61, 62, 0.1)
-//         border-radius: 8px
-// } */
-
-/* button block */
 
 .button {
   height: 36px;
