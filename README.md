@@ -1,31 +1,30 @@
-# idaproject-test
+# idaproject-test (=ↀωↀ=) 
+
+
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/449893ae-aae3-4b55-86ed-ee70f426d97b/deploy-status)](https://app.netlify.com/sites/idaproject-test-vash/deploys)
+## 
+Поднятый проект на базе  Netlify :rocket: https://idaproject-test-vash.netlify.app/ :rocket:
+
+![Preview](https://user-images.githubusercontent.com/53947691/184795649-ba481730-f29e-4d3b-8392-cf9ad1804f43.png)
+
+## Ветки :cat:
+Постепенно показания результата планировалась в каждой ветке, но во время разработки приходилось фиксить то, что не принадлежало актуальной ветке. 
+Постепенные действия можно увидеть с `first-level` до `third-level` веток. Название веток и характер разделов ТЗ не индендичны. 
+
+Для просмотра окончательного результата необходимо перейти на ветку 'main'.
+
+## Запуск :octocat:
+
+Для запуска проекта требуется запустить:
+   1) `npm ci` 
+   2) локальный сервер `npm run serve`
 
 
-## Project setup
-```
-npm install
-```
+## Разработано :smile_cat:
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+1,2,3 уровни с большей частью бонусных задания. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Разбрабатывается :scream_cat:
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-<!-- https://dev.to/ameeraabed/answer-there-isn-t-anything-to-compare-nothing-to-compare-branches-are-entirely-different-commit-histories-4o3g -->
-<!-- https://ru.stackoverflow.com/questions/509958/%D0%9A%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D0%BD%D0%BE%D0%B2%D1%8B%D0%B5-%D0%B2%D0%B5%D1%82%D0%BA%D0%B8-%D0%B8%D0%B7-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F-git -->
+Верстка адаптивной версии под мобильные устройства.
