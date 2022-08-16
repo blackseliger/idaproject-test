@@ -24,20 +24,25 @@ export default {
       type: String,
       required: true,
     },
+
     placeholder: {
       type: String,
       required: true,
     },
+
     type: {
       type: String,
       default: 'text',
     },
+
     modelValue: {
       type: [String, Boolean, Number, Function],
       required: true,
       default: true,
     },
   },
+
+  emits: ['update:modelValue'],
 
   data() {},
 
@@ -49,5 +54,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

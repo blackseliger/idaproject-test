@@ -35,14 +35,17 @@ export default {
       type: String,
       required: true,
     },
+
     placeholder: {
       type: String,
       required: true,
     },
+
     type: {
       type: String,
       default: 'text',
     },
+
     modelValue: {
       type: [String, Boolean, Number, Function],
       required: true,
@@ -50,7 +53,15 @@ export default {
     },
   },
 
+  emits: ['update:modelValue'],
+
   data() {},
+
+  computed: {
+    isFill() {
+      return this.modelValue !== '' ? false : true;
+    },
+  },
 
   methods: {
     controlInput(value) {
@@ -66,14 +77,7 @@ export default {
       }
     },
   },
-
-  computed: {
-    isFill() {
-      return this.modelValue !== '' ? false : true;
-    },
-  },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

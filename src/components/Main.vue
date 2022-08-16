@@ -22,9 +22,9 @@ export default {
       type: Object,
       required: true,
       default() {
-        return {}
-      }
-    }
+        return {};
+      },
+    },
   },
 };
 </script>
@@ -124,8 +124,6 @@ export default {
   }
 
   &__info {
-    word-wrap: break-word;
-
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;

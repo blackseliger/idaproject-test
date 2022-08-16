@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="$emit('handleSubmit', formData )" class="form-group">
+  <form class="form-group" @submit.prevent="$emit('handleSubmit', formData)">
     <ui-input v-model="formData.title" label="Наименование товара" placeholder="Введите наименование товара"></ui-input>
     <ui-text-area
       v-model="formData.description"
@@ -12,7 +12,7 @@
       placeholder="Введите ссылку на изображение товара"
     ></ui-input>
     <ui-input v-model="formData.price" label="Цена товара" type="number" placeholder="Введите цену товара"></ui-input>
-    <button class="button"  :disabled="buttonWork">Добавить товар</button>
+    <button class="button" :disabled="buttonWork">Добавить товар</button>
   </form>
 </template>
 
@@ -25,7 +25,7 @@ const validKeys = ['title', 'price', 'scrImg'];
 export default {
   name: 'UiForm.vue',
 
-  components: { UiInput, UiTextArea},
+  components: { UiInput, UiTextArea },
 
   props: {
     goods: {
@@ -36,6 +36,8 @@ export default {
       },
     },
   },
+
+  emits: ['handleSubmit'],
 
   data() {
     return {
@@ -61,7 +63,6 @@ export default {
       return result;
     },
   },
-
 };
 </script>
 
@@ -158,7 +159,7 @@ export default {
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  transition: background 200ms ease-in-out; 
+  transition: background 200ms ease-in-out;
   padding: 10px 95px 11px 95px;
   border: none;
   cursor: pointer;
@@ -175,5 +176,4 @@ export default {
     box-shadow: none;
   }
 }
-
 </style>

@@ -70,26 +70,11 @@ export default {
           scrImg: 'https://i.imgur.com/13x8uMi.jpeg',
         },
       ],
+
       id: null,
       selected: 'Default',
       directions,
     };
-  },
-
-  mounted() {
-    this.goods = JSON.parse(localStorage.getItem('carts'))  || [];
-  },
-
-  methods: {
-    handleSubmit(data) {
-      this.goods.push({ ...data, price: data.price.replace(/\s/g, ''), id: shortid.generate() });
-      localStorage.setItem('carts', JSON.stringify(this.goods))
-    },
-
-    handleDelete(id) {
-      this.goods = this.goods.filter((el) => el.id !== id);
-      localStorage.setItem('carts', JSON.stringify(this.goods))
-    },
   },
 
   computed: {
@@ -102,6 +87,22 @@ export default {
               ? 1 * el1.title.localeCompare(el2.title, 'ru')
               : direction * (el1.price - el2.price);
           });
+    },
+  },
+
+  mounted() {
+    this.goods = JSON.parse(localStorage.getItem('carts')) || [];
+  },
+
+  methods: {
+    handleSubmit(data) {
+      this.goods.push({ ...data, price: data.price.replace(/\s/g, ''), id: shortid.generate() });
+      localStorage.setItem('carts', JSON.stringify(this.goods));
+    },
+
+    handleDelete(id) {
+      this.goods = this.goods.filter((el) => el.id !== id);
+      localStorage.setItem('carts', JSON.stringify(this.goods));
     },
   },
 };

@@ -3,7 +3,7 @@
     <transition name="fade">
       <template v-if="goods.length">
         <transition-group name="cards">
-          <div class="main__card card" v-for="(card) in goods" :key="card.id">
+          <div v-for="card in goods" :key="card.id" class="main__card card">
             <div class="card__icon_delete" @click="removeCard(card.id)">
               <svg
                 class="card__icon"
