@@ -88,6 +88,7 @@ export default {
 
     handleDelete(id) {
       this.goods = this.goods.filter((el) => el.id !== id);
+      localStorage.setItem('carts', JSON.stringify(this.goods))
     },
   },
 

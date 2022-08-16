@@ -1,5 +1,8 @@
 # idaproject-test
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/449893ae-aae3-4b55-86ed-ee70f426d97b/deploy-status)](https://app.netlify.com/sites/idaproject-test-vash/deploys)
+
+
 ## Project setup
 ```
 npm install
