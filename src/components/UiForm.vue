@@ -18,14 +18,14 @@
 
 <script>
 import UiInput from './UiInput.vue';
-import UiTextArea from './UiTextArea.vue';
-
+import UiTextArea from './UiInputText.vue';
+// import uiTextArea from './uiTextarea.vue';
 const validKeys = ['title', 'price', 'scrImg'];
 
 export default {
   name: 'UiForm.vue',
 
-  components: { UiInput, UiTextArea },
+  components: { UiInput, UiTextArea},
 
   props: {
     goods: {
