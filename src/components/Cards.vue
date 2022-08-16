@@ -3,7 +3,7 @@
     <transition name="fade">
       <template v-if="goods.length">
         <transition-group name="cards">
-          <div class="main__card card" v-for="card in goods" :key="card.id">
+          <div class="main__card card" v-for="(card) in goods" :key="card.id">
             <div class="card__icon_delete" @click="removeCard(card.id)">
               <svg
                 class="card__icon"
@@ -46,7 +46,7 @@
               <div class="card__info">
                 {{ card.description }}
               </div>
-              <div class="card__price">{{ card.price }}</div>
+              <div class="card__price">{{ new Intl.NumberFormat('ru-RU').format(card.price) }}</div>
             </div>
           </div>
         </transition-group>

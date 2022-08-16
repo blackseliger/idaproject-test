@@ -3,15 +3,15 @@
     <header class="page__header">
       <div class="container container_header">
         <div class="header__title">Добавление товара</div>
-        <UiDropdown></UiDropdown>
+        <UiDropdown v-model:selected="selected"></UiDropdown>
       </div>
     </header>
     <main class="page__main">
       <div class="container container_main">
         <aside class="main__form aside__form">
-          <asideForm @handleSubmit='handleSubmit'></asideForm>
+          <asideForm @handleSubmit="handleSubmit"></asideForm>
         </aside>
-        <pageCards :goods="goods" @handleDelete="handleDelete"></pageCards>
+        <pageCards :goods="controlGoods" @handleDelete="handleDelete"></pageCards>
       </div>
     </main>
   </div>
@@ -23,7 +23,12 @@ import asideForm from './components/UiForm.vue';
 import pageCards from './components/Cards.vue';
 import UiDropdown from './components/Dropdown.vue';
 
-
+const directions = {
+  asc: 1,
+  desc: -1,
+  Default: false,
+  title_asc: 'text',
+};
 
 export default {
   name: 'App',
@@ -38,23 +43,23 @@ export default {
       goods: [
         {
           id: shortid.generate(),
-          title: 'params',
+          title: 'А',
+          description: 'loreo',
+          price: 5000,
+          scrImg: 'https://i.imgur.com/13x8uMi.jpeg',
+        },
+        {
+          id: shortid.generate(),
+          title: 'Б',
           description: 'loreo',
           price: 10000,
           scrImg: 'https://i.imgur.com/13x8uMi.jpeg',
         },
         {
           id: shortid.generate(),
-          title: 'params',
+          title: 'Д',
           description: 'loreo',
-          price: 10000,
-          scrImg: 'https://i.imgur.com/13x8uMi.jpeg',
-        },
-        {
-          id: shortid.generate(),
-          title: 'params',
-          description: 'loreo',
-          price: 10000,
+          price: 90000,
           scrImg: 'https://i.imgur.com/13x8uMi.jpeg',
         },
         {
@@ -66,29 +71,38 @@ export default {
         },
       ],
       id: null,
+      selected: 'Default',
+      directions,
     };
+  },
+
+  mounted() {
+    this.goods = JSON.parse(localStorage.getItem('carts'))  || [];
   },
 
   methods: {
     handleSubmit(data) {
-      this.goods.push({...data, id: shortid.generate()})
+      this.goods.push({ ...data, price: data.price.replace(/\s/g, ''), id: shortid.generate() });
+      localStorage.setItem('carts', JSON.stringify(this.goods))
     },
 
     handleDelete(id) {
-      this.goods.splice(id, 1)
-      // console.log(id);
-      // this.id = id;
-    }
+      this.goods = this.goods.filter((el) => el.id !== id);
+    },
   },
 
   computed: {
     controlGoods() {
-      console.log(this.id);
-      console.log(this.goods.filter((el) => el.id !== this.id));
-      return this.goods.filter((el) => el.id !== this.id)
-    }
+      const direction = directions[this.selected];
+      return !direction
+        ? this.goods
+        : [...this.goods].sort((el1, el2) => {
+            return direction === 'text'
+              ? 1 * el1.title.localeCompare(el2.title, 'ru')
+              : direction * (el1.price - el2.price);
+          });
+    },
   },
-  
 };
 </script>
 
