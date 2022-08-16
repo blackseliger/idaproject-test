@@ -110,6 +110,7 @@ export default {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1.5rem;
+    word-break: break-all;
   }
 
   &__header {
